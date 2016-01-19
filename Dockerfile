@@ -1,7 +1,7 @@
 FROM nginx
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install webhttrack
+RUN apt-get install webhttrack -y
 RUN echo 'httrack "'$TARGET_HOST'" -O "/usr/share/nginx/html" "'$FILTER'" --update' > /var/httrack.sh
 RUN crontab -l > /var/tempCron
 RUN echo "00 00 * * * bash /var/httrack.sh" >> /var/tempCron
