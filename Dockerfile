@@ -3,6 +3,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install webhttrack cron -y
 RUN echo 'httrack "'$TARGET_HOST'" -O "/usr/share/nginx/html" "'$FILTER'" --update' > /var/httrack.sh
+RUN service cron start
 RUN crontab -l > /var/tempCron
 RUN echo "00 00 * * * bash /var/httrack.sh" >> /var/tempCron
 RUN crontab /var/tempCron
