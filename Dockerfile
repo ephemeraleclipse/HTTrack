@@ -8,5 +8,5 @@ RUN echo 'httrack "'$TARGET_HOST'" -O "/usr/share/nginx/html" "'$FILTER'" --upda
 #RUN echo "00 00 * * * bash /var/httrack.sh" >> /var/tempCron
 #RUN crontab /var/tempCron
 #RUN rm /var/tempCron
-CMD ['nohup httrack "'$TARGET_HOST'" -O "/usr/share/nginx/html" "'$FILTER'" & sleep 5 && tail /usr/share/nginx/html/hts-log.txt -f']
+CMD nohup httrack "'$TARGET_HOST'" -O "/usr/share/nginx/html" "'$FILTER'" & sleep 5 && tail /usr/share/nginx/html/hts-log.txt -f
 EXPOSE 80
